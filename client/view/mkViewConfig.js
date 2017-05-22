@@ -35,19 +35,9 @@ var toolBar = function(state){
 
 export default function(state, actions){
 
-  var title = state.ui.title;
-
-  var subjectPage = {
-    tag: 'div',
-    props: {
-      class: 'subjectPage',
-    },
-    children: []
-  };
-
   var domConfig = [
     toolBar(state),
-    subjectPage
+    state.svg
   ];
 
   return domConfig;

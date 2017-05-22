@@ -12,7 +12,7 @@ var global = window || global;
 global.logger = console.log;
 global.f = f;
 
-import mkDrawing from 'mkDrawing';
+import map_drawing from './map';
 
 //////////////
 
@@ -21,19 +21,9 @@ var target_element = document.getElementById('content');
 import mk_init_state from './mk_init_state';
 var init_state = mk_init_state();
 
-var x,y,w,h;
-var d = mkDrawing();
-x = 11;
-y = 12;
-w = 13;
-h = 14;
-d.rect(
-  [x,y],
-  [w,h]
-);
-console.log(d);
-var svg = d.mkSVG();
-console.log(svg);
+init_state.drawing = map_drawing();
+
+init_state.svg = init_state.drawing.mkSVG();
 
 var reducers = {
   // actions.init()
