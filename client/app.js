@@ -12,8 +12,7 @@ var global = window || global;
 global.logger = console.log;
 global.f = f;
 
-import get_html from './get_html';
-import parse_wiki_query_results from './parse_wiki_query_results';
+import mkDrawing from 'mkdrawing';
 
 //////////////
 
@@ -22,6 +21,19 @@ var target_element = document.getElementById('content');
 import mk_init_state from './mk_init_state';
 var init_state = mk_init_state();
 
+var x,y,w,h;
+var d = mkDrawing();
+x = 11;
+y = 12;
+w = 13;
+h = 14;
+d.rect(
+  [x,y],
+  [w,h]
+);
+console.log(d);
+var svg = d.mkSVG();
+console.log(svg);
 
 var reducers = {
   // actions.init()
@@ -42,6 +54,7 @@ import mkViewConfig from './view/mkViewConfig';
 var mk_page_spec = function(state, actions){
   global.state = state; // devmode
   sessionStorage.setItem('selected_subject', state.ui.selected_subject);
+  document.title = state.ui.title;
 
   var page_spec = mkViewConfig(state, actions);
   return page_spec;

@@ -23,7 +23,8 @@
     "specdom_helper": "kshowalter/specdom_helper",
     "mkwebsite": "kshowalter/mkwebsite",
     "hash_router": "kshowalter/hash_router",
-    "functions": "kshowalter/functions"
+    "functions": "kshowalter/functions",
+    "mkDrawing": "kshowalter/mkDrawing"
   },
   "devDependencies": {
     "babel-core": "~6.8.0",

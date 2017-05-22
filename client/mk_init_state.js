@@ -1,7 +1,9 @@
 export default function() {
   var initState = {
     db: [],
-    ui: {}
+    ui: {
+      title: 'procedural map test'
+    }
   };
 
 

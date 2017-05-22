@@ -11,7 +11,7 @@ var togleFold = function(e){
 
 var toolBar = function(state){
 
-  var title = state.db[state.ui.selected_subject].title;
+  var title = state.ui.title;
 
   var toolBarConfig = {
     tag: 'div',
@@ -35,7 +35,7 @@ var toolBar = function(state){
 
 export default function(state, actions){
 
-  var title = state.db[state.ui.selected_subject].title;
+  var title = state.ui.title;
 
   var subjectPage = {
     tag: 'div',
