@@ -12,7 +12,7 @@ var global = window || global;
 global.logger = console.log;
 global.f = f;
 
-import mkDrawing from 'mkdrawing';
+import mkDrawing from 'mkDrawing';
 
 //////////////
 
