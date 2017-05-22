@@ -63,27 +63,5 @@ window.onresize = function(){
   //console.log(window.inner_width);
 };
 
-//var q = 'cow';
-var q = 'cow';
-
-var base_url = 'https://en.wikipedia.org/w/api.php';
-
-//var url = 'https://en.wikipedia.org/wiki/Cattle' + q;
-var url = base_url + '?' + 'action=query&format=json&gsrlimit=15&generator=search&origin=*&gsrsearch=' + q;
-
-
-get_html(url, function(url, string){
-  var json =  JSON.parse(string);
-  console.log(json);
-  var page_list = parse_wiki_query_results(json);
-  //var url = base_url + '?' + 'action=query&titles=' + page_list[0].title + '&prop=info&origin=*&format=json';
-  var url = 'https://en.wikipedia.org/wiki/'+page_list[0].title+'?action=raw&origin=*';
-
-  get_html(url, function(url, string){
-    //var json =  JSON.parse(string);
-    console.log('result', string);
-  })
-
-});
 
 console.log('\\/');

@@ -24,7 +24,7 @@ var toolBar = function(state){
         props: {
           class: 'title',
         },
-        text: 'sumpedia ('+title+')'
+        text: 'map test'
       }
     ]
   };
@@ -42,9 +42,7 @@ export default function(state, actions){
     props: {
       class: 'subjectPage',
     },
-    children: [
-      title
-    ]
+    children: []
   };
 
   var domConfig = [

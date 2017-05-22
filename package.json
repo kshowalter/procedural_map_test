@@ -4,7 +4,7 @@
   "description": "Test creation of map viewer, and procedural generation.",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack-dev-server --content-base public/ --inline --hot -d",
+    "serve": "webpack-dev-server --content-base public/ --inline --hot -d"
   },
   "repository": {
     "type": "git",
