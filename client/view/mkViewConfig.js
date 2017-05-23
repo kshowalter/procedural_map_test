@@ -37,7 +37,7 @@ export default function(state, actions){
 
   var domConfig = [
     toolBar(state),
-    state.svg
+    //state.svg
   ];
 
   return domConfig;

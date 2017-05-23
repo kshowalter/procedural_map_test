@@ -3,8 +3,10 @@ export default function() {
     db: [],
     drawing: {},
     svg: '',
+    seed: 'pholow',
     ui: {
-      title: 'procedural map test'
+      title: 'procedural map test',
+      zoom: 1
     }
   };
 
