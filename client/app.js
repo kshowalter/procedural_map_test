@@ -27,24 +27,30 @@ init_state.drawing = map_drawing(init_state);
 var reducers = {
   // actions.init()
   init: function(state, action){
-    console.log('init', action);
+    console.log('-action:', action);
     return state;
   },
   // actions.route(subject_id)
   route: function(state, action){
+    console.log('-action:', action);
     var subject_id = action.arguments[0];
     console.log('subject_id', subject_id);
     //state.ui.selected_subject = subject_id;
     return state;
   },
-  zoom_in: function(state, action){
-    console.log(action);
-    state.ui.zoom += 0.1;
+  zoom: function(state, action){
+    var zoom_amount = action.arguments[0];
+    state.ui.scale += zoom_amount;
     return state;
   },
-  zoom_out: function(state, action){
-    console.log(action);
-    state.ui.zoom -= 0.1;
+  move_x: function(state, action){
+    var move_amount = action.arguments[0];
+    state.ui.center[0] += move_amount;
+    return state;
+  },
+  move_y: function(state, action){
+    var move_amount = action.arguments[0];
+    state.ui.center[1] += move_amount;
     return state;
   },
 
@@ -57,6 +63,11 @@ var mk_page_spec = function(state, actions){
   sessionStorage.setItem('selected_subject', state.ui.selected_subject);
   document.title = state.ui.title;
 
+  var map_container = document.getElementById('map_container');
+  //if( map_container ){
+  //  state.ui.view_size[0] = map_container.clientWidth;
+  //  state.ui.view_size[1] = map_container.clientHeight;
+  //}
   state.drawing = map_drawing(state);
   state.svg = state.drawing.mkSVG();
   var page_spec = mkViewConfig(state, actions);

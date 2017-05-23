@@ -89,3 +89,7 @@ body{
 .contentItem_facility{
   background-color: #7a7a7a
 }
+
+#map_container svg{
+  border: 2px solid black;
+}

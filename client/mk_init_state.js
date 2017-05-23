@@ -6,7 +6,9 @@ export default function() {
     seed: 'pholow',
     ui: {
       title: 'procedural map test',
-      zoom: 1
+      scale: 1,
+      center: [100,100],
+      view_size: [500,500]
     }
   };
 

@@ -12,15 +12,17 @@ export default function(state){
   var x,y,w,h;
   var d = mkDrawing({
     size: {
-      w: 1000,
-      h: 1000
+      w: state.ui.view_size[0],
+      h: state.ui.view_size[1]
+    },
+    center: {
+      x: state.ui.center[0],
+      y: state.ui.center[1],
     },
     fonts: fonts,
     layer_attr: layer_attr,
-    scale: state.ui.scale
+    scale: state.ui.scale,
   });
-
-  console.log(d);
 
   x = 20;
   y = 20;

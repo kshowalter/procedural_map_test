@@ -21,6 +21,8 @@ var key_table = {
   33: 'page_up',
   34: 'page_down',
   77: 'm',
+  189: '-',
+  187: '=',
 };
 
 var control = {};
@@ -40,16 +42,35 @@ control.key_press = function(e, key_action) {
   var key_code = e.keyCode;
   var key_name = key_table[key_code];
   var act = this.actions;
-  console.log(key_code,key_name);
+  //console.log(key_code,key_name);
   if(key_name !== undefined){
     e.preventDefault();
 
 
+
     if( key_action === 'down' && key_name === 'page_up' ) {
-      //act.zoom_out();
+      act.zoom(0.1);
     }
     if( key_action === 'down' && key_name === 'page_down' ) {
-      act.zoom_in();
+      act.zoom(-0.1);
+    }
+    if( key_action === 'down' && key_name === '-' ) {
+      act.zoom(0.1);
+    }
+    if( key_action === 'down' && key_name === '=' ) {
+      act.zoom(-0.1);
+    }
+    if( key_action === 'down' && key_name === 'up' ) {
+      act.move_y(-5);
+    }
+    if( key_action === 'down' && key_name === 'down' ) {
+      act.move_y(5);
+    }
+    if( key_action === 'down' && key_name === 'right' ) {
+      act.move_x(5);
+    }
+    if( key_action === 'down' && key_name === 'left' ) {
+      act.move_x(-5);
     }
 
 

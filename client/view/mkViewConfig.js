@@ -37,7 +37,15 @@ export default function(state, actions){
 
   var domConfig = [
     toolBar(state),
-    //state.svg
+    {
+      tag: 'div',
+      props: {
+        id: 'map_container'
+      },
+      children:[
+        state.svg
+      ]
+    }
   ];
 
   return domConfig;
