@@ -13,6 +13,7 @@ global.logger = console.log;
 global.f = f;
 
 import map_drawing from './map';
+import movemap from './movemap';
 
 //////////////
 
@@ -28,6 +29,7 @@ var reducers = {
   // actions.init()
   init: function(state, action){
     console.log('-action:', action);
+    state.ui.redraw = true;
     return state;
   },
   // actions.route(subject_id)
@@ -36,21 +38,23 @@ var reducers = {
     var subject_id = action.arguments[0];
     console.log('subject_id', subject_id);
     //state.ui.selected_subject = subject_id;
+    state.ui.redraw = true;
     return state;
   },
   zoom: function(state, action){
-    var zoom_amount = action.arguments[0];
-    state.ui.scale += zoom_amount;
+    var zoom_direction = action.arguments[0];
+    var zoom_factor = zoom_direction ? 1.2 : 0.8;
+    state.ui.scale *= zoom_factor;
     return state;
   },
   move_x: function(state, action){
     var move_amount = action.arguments[0];
-    state.ui.center[0] += move_amount;
+    state.ui.center.x += move_amount * state.ui.scale;
     return state;
   },
   move_y: function(state, action){
     var move_amount = action.arguments[0];
-    state.ui.center[1] += move_amount;
+    state.ui.center.y += move_amount * state.ui.scale;
     return state;
   },
 
@@ -58,18 +62,28 @@ var reducers = {
 
 import mkViewConfig from './view/mkViewConfig';
 var mk_page_spec = function(state, actions){
-  console.log('^s: ', state);
+  //console.log('^s: ', state);
   global.state = state; // devmode
   sessionStorage.setItem('selected_subject', state.ui.selected_subject);
   document.title = state.ui.title;
 
-  var map_container = document.getElementById('map_container');
+  //var map_container = document.getElementById('map_container');
   //if( map_container ){
   //  state.ui.view_size[0] = map_container.clientWidth;
   //  state.ui.view_size[1] = map_container.clientHeight;
   //}
-  state.drawing = map_drawing(state);
-  state.svg = state.drawing.mkSVG();
+  //var svg = state.svg;
+  //state.ui.redraw = true;
+  if( state.ui.redraw ){
+    //console.log('|\\> redraw');
+    state.drawing = map_drawing(state);
+    state.svg = state.drawing.mkSVG();
+    state.ui.redraw = false;
+  } else {
+    //console.log('|\\/| move');
+    //state.svg = state.drawing.mkSVG();
+    movemap(state, state.svg);
+  }
   var page_spec = mkViewConfig(state, actions);
   return page_spec;
 };

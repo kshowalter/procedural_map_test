@@ -11,14 +11,8 @@ export default function(state){
 
   var x,y,w,h;
   var d = mkDrawing({
-    size: {
-      w: state.ui.view_size[0],
-      h: state.ui.view_size[1]
-    },
-    center: {
-      x: state.ui.center[0],
-      y: state.ui.center[1],
-    },
+    size: state.ui.view_size,
+    center: state.ui.center,
     fonts: fonts,
     layer_attr: layer_attr,
     scale: state.ui.scale,
@@ -100,7 +94,7 @@ export default function(state){
       x + block_lx + road_w/2,
       y + block_ly + road_w/2,
     ]);
-  */
+  //*/
 
 
   return d;

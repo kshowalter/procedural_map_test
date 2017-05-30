@@ -6,9 +6,16 @@ export default function() {
     seed: 'pholow',
     ui: {
       title: 'procedural map test',
+      redraw: true,
       scale: 1,
-      center: [100,100],
-      view_size: [500,500]
+      center: {
+        x: 100,
+        y: 100,
+      },
+      view_size: {
+        w: 1000,
+        h: 950        
+      }
     }
   };
 
