@@ -22,6 +22,11 @@ var target_element = document.getElementById('content');
 import mk_init_state from './mk_init_state';
 var init_state = mk_init_state();
 
+init_state.ui.center.x = Number( sessionStorage.getItem('center_x') ) || init_state.ui.center.x;
+init_state.ui.center.y = Number( sessionStorage.getItem('center_y') ) || init_state.ui.center.y;
+init_state.ui.scale = Number( sessionStorage.getItem('scale') ) || init_state.ui.scale;
+//init_state.ui.view_size = sessionStorage.getItem('view_size') || init_state.ui.view_size;
+
 init_state.drawing = map_drawing(init_state);
 
 
@@ -64,7 +69,11 @@ import mkViewConfig from './view/mkViewConfig';
 var mk_page_spec = function(state, actions){
   //console.log('^s: ', state);
   global.state = state; // devmode
-  sessionStorage.setItem('selected_subject', state.ui.selected_subject);
+  sessionStorage.setItem('center_x', state.ui.center.x);
+  sessionStorage.setItem('center_y', state.ui.center.y);
+  sessionStorage.setItem('scale', state.ui.scale);
+  //sessionStorage.setItem('view_size_w', state.ui.view_size.w);
+  //sessionStorage.setItem('view_size_h', state.ui.view_size.h);
   document.title = state.ui.title;
 
   //var map_container = document.getElementById('map_container');
