@@ -20,6 +20,7 @@ layers['property'] = Object.assign(Object.create(layers.base),{
 });
 
 layers['road'] = Object.assign(Object.create(layers.base),{
+  stroke: 'none',
   fill: '#9a9a9a',
 });
 layers['road_center'] = Object.assign(Object.create(layers.base),{
