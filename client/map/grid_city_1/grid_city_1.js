@@ -46,19 +46,19 @@ export default function(location, map_settings){
     d.append( section_park(map_settings, grid_locaiton(o,0))  );
     d.append( section_park(map_settings, grid_locaiton(-o,0)) );
   });
-  d.append( section_park(map_settings, grid_locaiton(2,2))  );
-  d.append( section_park(map_settings, grid_locaiton(2,1))  );
-  d.append( section_park(map_settings, grid_locaiton(2,-1))  );
-  d.append( section_park(map_settings, grid_locaiton(2,-2))  );
-  d.append( section_park(map_settings, grid_locaiton(1,-2))  );
-  d.append( section_park(map_settings, grid_locaiton(-1,-2))  );
-  d.append( section_park(map_settings, grid_locaiton(-2,-2))  );
-  d.append( section_park(map_settings, grid_locaiton(-2,-1))  );
-  d.append( section_park(map_settings, grid_locaiton(-2,1))  );
-  d.append( section_park(map_settings, grid_locaiton(-2,2))  );
-  d.append( section_park(map_settings, grid_locaiton(-1,2))  );
-  d.append( section_park(map_settings, grid_locaiton(1,2))  );
 
+  var quads = [
+    [1,1],
+    [-1,1],
+    [1,-1],
+    [-1,-1],
+  ];
+
+  quads.forEach(function(quad){
+    d.append( section_park(map_settings, grid_locaiton(quad[0]*2,quad[1]*2) )  );
+    d.append( section_park(map_settings, grid_locaiton(quad[0]*2,quad[1]*1) )  );
+    d.append( section_park(map_settings, grid_locaiton(quad[0]*1,quad[1]*2) )  );
+  });
 
   x = center_x + size.grid_city_1.city_section[0]/2;
   y = center_y + size.grid_city_1.city_section[1]/2;
