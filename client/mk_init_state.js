@@ -13,8 +13,8 @@ export default function() {
         y: 100,
       },
       view_size: {
-        w: 1000,
-        h: 950        
+        w: 1200,
+        h: 950
       }
     }
   };

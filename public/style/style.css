@@ -91,5 +91,5 @@ body{
 }
 
 #map_container svg{
-  border: 2px solid black;
+  border: 1px dashed grey;
 }

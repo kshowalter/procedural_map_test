@@ -18,6 +18,7 @@ import movemap from './movemap';
 //////////////
 
 var target_element = document.getElementById('content');
+target_element.style.backgroundColor = "#EAEAEA";
 
 import mk_init_state from './mk_init_state';
 var init_state = mk_init_state();
@@ -84,7 +85,7 @@ var mk_page_spec = function(state, actions){
   //var svg = state.svg;
   //state.ui.redraw = true;
   if( state.ui.redraw ){
-    //console.log('|\\> redraw');
+    console.log('|\\> redraw');
     state.drawing = map_drawing(state);
     state.svg = state.drawing.mkSVG();
     state.ui.redraw = false;
