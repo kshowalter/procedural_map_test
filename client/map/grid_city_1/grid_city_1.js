@@ -22,15 +22,43 @@ export default function(location, map_settings){
   x = center_x;
   y = center_y;
 
+  var mk_grid_locator = function(center, city_section){
+
+    var grid_locaiton = function(loc_x, loc_y){
+      var offset_x = city_section[0] * loc_x;
+      var offset_y = city_section[1] * loc_y;
+      var x = center[0] + offset_x;
+      var y = center[1] + offset_y;
+      return [x,y];
+    };
+
+    return grid_locaiton;
+  };
+
+  var grid_locaiton = mk_grid_locator(location,size.grid_city_1.city_section);
+  console.log(location, grid_locaiton(0,2));
+
   var n = 5;
   f.range(n).forEach(function(i){
-    offset_x = size.grid_city_1.city_section[0] * (2+i);
-    offset_y = size.grid_city_1.city_section[1] * (2+i);
-    d.append( section_park(map_settings, [x+offset_x,y]) );
-    d.append( section_park(map_settings, [x-offset_x,y]) );
-    d.append( section_park(map_settings, [x,y+offset_y]) );
-    d.append( section_park(map_settings, [x,y-offset_y]) );
+    var o = i+2;
+    d.append( section_park(map_settings, grid_locaiton(0,o))  );
+    d.append( section_park(map_settings, grid_locaiton(0,-o)) );
+    d.append( section_park(map_settings, grid_locaiton(o,0))  );
+    d.append( section_park(map_settings, grid_locaiton(-o,0)) );
   });
+  d.append( section_park(map_settings, grid_locaiton(2,2))  );
+  d.append( section_park(map_settings, grid_locaiton(2,1))  );
+  d.append( section_park(map_settings, grid_locaiton(2,-1))  );
+  d.append( section_park(map_settings, grid_locaiton(2,-2))  );
+  d.append( section_park(map_settings, grid_locaiton(1,-2))  );
+  d.append( section_park(map_settings, grid_locaiton(-1,-2))  );
+  d.append( section_park(map_settings, grid_locaiton(-2,-2))  );
+  d.append( section_park(map_settings, grid_locaiton(-2,-1))  );
+  d.append( section_park(map_settings, grid_locaiton(-2,1))  );
+  d.append( section_park(map_settings, grid_locaiton(-2,2))  );
+  d.append( section_park(map_settings, grid_locaiton(-1,2))  );
+  d.append( section_park(map_settings, grid_locaiton(1,2))  );
+
 
   x = center_x + size.grid_city_1.city_section[0]/2;
   y = center_y + size.grid_city_1.city_section[1]/2;
